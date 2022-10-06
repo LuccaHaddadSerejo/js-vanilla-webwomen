@@ -1,1 +1,41 @@
-/* Desenvolva sua estilização aqui... */
+
+.header{
+    min-height: 740px;
+    width: 100%;
+    background-image: url(../../assets/img/header-bg.svg);
+    background-position:center;
+    background-repeat: no-repeat;
+}
+
+.background_img{
+    max-width: 100%;
+}
+
+
+.header_div{
+}
+
+.header_logo{
+    margin-top: 100px;
+}
+
+.header_title{
+    color: var(--color-grey-3);
+}
+
+.header_p-1{
+    color: var(--color-grey-5);
+    line-height: 2rem;
+}
+
+.header_p-2{
+    line-height: 150%;
+    font-size: var(--text-1);
+    color: var(--color-grey-3);
+}
+
+.header_button{
+}
+
+.main{
+}

@@ -3,12 +3,9 @@
 * {
   padding: 0;
   margin: 0;
+  list-style: none;
   box-sizing: border-box;
   scroll-behavior: smooth;
-}
-
-img {
-  max-width: 100%;
 }
 
 :root {
@@ -31,14 +28,18 @@ img {
   --text-1:  1.125rem;
   --text-2:  1rem;
   --text-3:  0.875rem;
+
+  --weight-1: 600;
+  --weight-2: 400;
 }
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: var(--color-grey-5);
 }
 
 .container {
-  width: 76rem;
+  width: 100rem;
   max-width: 100%;
   margin: 0 auto;
   padding-left: 1rem;
