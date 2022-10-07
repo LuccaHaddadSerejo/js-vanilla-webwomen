@@ -46,7 +46,7 @@ body {
   padding-right: 1rem;
 }
 
-@media(min-width: 900px){
+@media(min-width: 800px){
   :root {
     --title-1: 3rem;
     --title-2: 2.5rem;
@@ -79,5 +79,12 @@ body {
     height: fit-content;
     margin-top: 120px;
     max-width: 503px;
+  }
+}
+
+@media (max-width: 320px){
+  .header_div{
+    position: relative;
+    bottom: 45px;
   }
 }
