@@ -12,7 +12,6 @@
 }
 
 .card-1_li{
-    max-width: 818px;
     width: 100%;
     background-color: var(--color-grey-6);
     padding: 38px;
@@ -53,11 +52,19 @@
 }
 
 .card-2{
-
+    background-color: var(--color-grey-6);
+    padding: 38px;
+    border-radius: var(--radius-default);
+    width: 100%;
 }
 
 .card-2_title{
+    margin-bottom: calc(74px - 32px);
+    color: var(--color-grey-1);
+}
 
+.card-2_empty{
+    color: var(--color-grey-2);
 }
 
 .card-2_ul{
@@ -65,7 +72,8 @@
 }
 
 .card-2_li{
-
+    border-bottom: 3px solid var(--color-grey-5);
+    padding: 32px 0;
 }
 
 .card-2_div{
@@ -73,17 +81,27 @@
 }
 
 .card-2_li_title{
-
+    color: var(--color-grey-1);
 }
 
 .card-2_li_button{
-
+    width: 50px;
+    height: 38px;
+    background-color: var(--color-grey-5);
+    border-radius: 8px;
+    border: 2px solid var(--color-grey-5);
+    cursor: pointer;
 }
 
 .card-2_div-2{
-
+    margin-top: 20px;
 }
 
 .card-2_span{
-    
+    color: var(--color-grey-2);
+}
+
+.section-1_desktop{
+    display: flex;
+    flex-direction: column;
 }

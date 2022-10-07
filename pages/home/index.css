@@ -26,8 +26,8 @@
 .header_p-1{
     color: var(--color-grey-5);
     line-height: 2rem;
+    max-width: 900px;
 }
-
 .header_p-2{
     line-height: 150%;
     font-size: var(--text-1);
