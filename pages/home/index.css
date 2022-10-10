@@ -37,5 +37,10 @@
 .header_button{
 }
 
+.anchor_link{
+    text-decoration: none;
+    color: inherit;
+}
+
 .main{
 }
