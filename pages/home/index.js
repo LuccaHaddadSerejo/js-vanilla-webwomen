@@ -38,11 +38,10 @@ function createMainList(){
     }
     
     listItemDivTwoBtn.addEventListener('click', function(){ 
-        asideListFull.innerHTML = '' 
+        asideListFull.innerHTML = ''
 
-        if(listItemDivTwoBtn.innerText == 'Candidatar'){
+        if(listItemDivTwoBtn.innerText == 'Candidatar'){  
             listItemDivTwoBtn.innerText = 'Retirar candidatura'
-            asideListFull.innerHTML = ''
             let newObject = {
                 id:job.id, 
                 title:job.title, 
@@ -57,7 +56,6 @@ function createMainList(){
             let indexAside = asideJobs.indexOf(job)
             asideJobs.splice(indexAside, 1)
             localStorage.setItem("appliedJobs", JSON.stringify(asideJobs))
-            renderMainList()
             renderAside(asideJobs)
         }
     })
