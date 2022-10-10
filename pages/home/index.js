@@ -1,8 +1,8 @@
 const asideJobs = []
-let jsonData = JSON.parse(localStorage.getItem("appliedJobs")) || []
+
 
 function createMainList(){
-    let teste = jsonData
+    let jsonData = JSON.parse(localStorage.getItem("appliedJobs")) || []
     const mainListFull = document.querySelector('.card-1_ul')
     const asideListFull = document.querySelector('.card-2_ul')   
 
@@ -34,7 +34,7 @@ function createMainList(){
     listItemParagraph.innerText = job.description
     listItemDivTwoSpan.innerText = job.modalities[0]
 
-    if(teste.filter(element => element.title == job.title).length > 0){
+    if(jsonData.filter(element => element.title == job.title).length > 0){
         listItemDivTwoBtn.innerText = 'Retirar candidatura'
     }else{
         listItemDivTwoBtn.innerText = 'Candidatar'
