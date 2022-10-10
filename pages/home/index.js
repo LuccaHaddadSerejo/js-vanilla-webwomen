@@ -140,10 +140,11 @@ function renderAside(asideArray){
 }
 
 function getJsonItem(){
-    return renderAside(JSON.parse(localStorage.getItem("appliedJobs"))) || renderAside([])
+    return JSON.parse(localStorage.getItem("appliedJobs")) || []
 }
 
-getJsonItem()
+renderAside(getJsonItem())
+
 renderMainList()
 
 
