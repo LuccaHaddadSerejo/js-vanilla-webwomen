@@ -2,6 +2,7 @@ const asideJobs = []
 
 function createMainList(){
     const mainListFull = document.querySelector('.card-1_ul')
+    const asideListFull = document.querySelector('.card-2_ul')
     jobsData.forEach(job => { 
     const listItems = document.createElement('li') 
     const listItemTitle = document.createElement('h2') 
@@ -33,12 +34,10 @@ function createMainList(){
  
 
     listItemDivTwoBtn.addEventListener('click', function(){ 
-        const asideListFull = document.querySelector('.card-2_ul')
         asideListFull.innerHTML = '' 
 
         if(listItemDivTwoBtn.innerText == 'Candidatar'){
             listItemDivTwoBtn.innerText = 'Retirar candidatura'
-            const asideListFull = document.querySelector('.card-2_ul')
             asideListFull.innerHTML = ''
             let newObject = {
                 id:job.id, 
@@ -66,9 +65,9 @@ function createMainList(){
     return mainListFull
 }
 
-function createAside(){
+function createAside(asideList){
     const asideListFull = document.querySelector('.card-2_ul')
-    asideJobs.forEach(job => {
+    asideList.forEach(job => {
         const listItems = document.createElement('li')
         const listItemsDivOne = document.createElement('div')
         const listItemsDivOneTitle = document.createElement('h2')
@@ -92,7 +91,6 @@ function createAside(){
         listItemsDivOneBtnImg.src = '../../assets/img/trash.svg'
 
         listItemsDivOneBtn.addEventListener('click', function(){
-            const asideListFull = document.querySelector('.card-2_ul')
             asideListFull.innerHTML = ''
             let indexAside = asideJobs.indexOf(job)
             asideJobs.splice(indexAside, 1)
@@ -131,7 +129,7 @@ function renderAside(asideArray){
     if(asideArray.length == 0){
         return asideSection.appendChild(createAsideEmpty())
     }else{
-        return asideSection.appendChild(createAside())
+        return asideSection.appendChild(createAside(asideArray))
     }
 }
 
