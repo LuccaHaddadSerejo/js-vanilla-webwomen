@@ -1,8 +1,9 @@
 const asideJobs = []
 
 function createMainList(){
+    let jsonData = JSON.parse(localStorage.getItem("appliedJobs"))
     const mainListFull = document.querySelector('.card-1_ul')
-    const asideListFull = document.querySelector('.card-2_ul')
+    const asideListFull = document.querySelector('.card-2_ul')   
     jobsData.forEach(job => { 
     const listItems = document.createElement('li') 
     const listItemTitle = document.createElement('h2') 
@@ -30,9 +31,12 @@ function createMainList(){
     listItemDivOneSpanTwo.innerText = job.location
     listItemParagraph.innerText = job.description
     listItemDivTwoSpan.innerText = job.modalities[0]
-    listItemDivTwoBtn.innerText = 'Candidatar'
- 
-
+    if(jsonData.filter(element => element.title == job.title).length > 0){
+        listItemDivTwoBtn.innerText = 'Retirar candidatura'
+    }else{
+        listItemDivTwoBtn.innerText = 'Candidatar'
+    }
+    
     listItemDivTwoBtn.addEventListener('click', function(){ 
         asideListFull.innerHTML = '' 
 
@@ -53,6 +57,7 @@ function createMainList(){
             let indexAside = asideJobs.indexOf(job)
             asideJobs.splice(indexAside, 1)
             localStorage.setItem("appliedJobs", JSON.stringify(asideJobs))
+            renderMainList()
             renderAside(asideJobs)
         }
     })
@@ -67,6 +72,7 @@ function createMainList(){
 
 function createAside(asideList){
     const asideListFull = document.querySelector('.card-2_ul')
+    const mainListFull = document.querySelector('.card-1_ul')
     asideList.forEach(job => {
         const listItems = document.createElement('li')
         const listItemsDivOne = document.createElement('div')
@@ -92,9 +98,11 @@ function createAside(asideList){
 
         listItemsDivOneBtn.addEventListener('click', function(){
             asideListFull.innerHTML = ''
+            mainListFull.innerHTML = ''
             let indexAside = asideJobs.indexOf(job)
             asideJobs.splice(indexAside, 1)
             localStorage.setItem("appliedJobs", JSON.stringify(asideJobs))
+            renderMainList()
             renderAside(asideJobs)
         })
 
