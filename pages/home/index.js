@@ -16,6 +16,7 @@ function createMainList(){
     const listItemDivTwo = document.createElement('div')
     const listItemDivTwoSpan = document.createElement('span') 
     const listItemDivTwoBtn = document.createElement('button')
+    
  
    
     listItems.classList = 'card-1_li flex_column'
@@ -33,17 +34,17 @@ function createMainList(){
     listItemDivOneSpanTwo.innerText = job.location
     listItemParagraph.innerText = job.description
     listItemDivTwoSpan.innerText = job.modalities[0]
-
     if(jsonData.filter(element => element.title == job.title).length > 0){
         listItemDivTwoBtn.innerText = 'Retirar candidatura'
     }else{
         listItemDivTwoBtn.innerText = 'Candidatar'
     }
     
-    listItemDivTwoBtn.addEventListener('click', function(){ 
-        asideListFull.innerHTML = ''
 
-        if(listItemDivTwoBtn.innerText == 'Candidatar'){  
+    listItemDivTwoBtn.addEventListener('click', function(){ 
+        
+        if(listItemDivTwoBtn.innerText == 'Candidatar'){ 
+            asideListFull.innerHTML = '' 
             listItemDivTwoBtn.innerText = 'Retirar candidatura'
             let newObject = {
                 id:job.id, 
@@ -55,9 +56,10 @@ function createMainList(){
             localStorage.setItem("appliedJobs", JSON.stringify(asideJobs))
             renderAside(asideJobs) 
         }else{
+            asideListFull.innerHTML = ''
             listItemDivTwoBtn.innerText = 'Candidatar' 
-            let indexAside = asideJobs.indexOf(job)
-            asideJobs.splice(indexAside, 1)
+            let findIndexAside = asideJobs.indexOf(job)
+            asideJobs.splice(findIndexAside, 1)
             localStorage.setItem("appliedJobs", JSON.stringify(asideJobs))
             renderAside(asideJobs)
         }
@@ -100,11 +102,11 @@ function createAside(asideList){
         listItemsDivOneBtn.addEventListener('click', function(){
             asideListFull.innerHTML = ''
             mainListFull.innerHTML = ''
-            let indexAside = asideJobs.indexOf(job)
-            asideJobs.splice(indexAside, 1)
+            let findIndexAside = asideJobs.indexOf(job)
+            asideJobs.splice(findIndexAside, 1)
             localStorage.setItem("appliedJobs", JSON.stringify(asideJobs))
             renderMainList()
-            renderAside(asideJobs)
+            renderAside(asideJobs)    
         })
 
         listItemsDivTwo.append(listItemsDivTwoSpanOne, listItemsDivTwoSpanTwo)
@@ -143,11 +145,12 @@ function renderAside(list){
 }
 
 function getJsonItem(){
-    return JSON.parse(localStorage.getItem("appliedJobs")) || []
+    let getItem = JSON.parse(localStorage.getItem("appliedJobs")) || []
+    getItem.forEach(element => asideJobs.push(element))
+    return asideJobs
 }
 
 renderAside(getJsonItem())
-
 renderMainList()
 
 
