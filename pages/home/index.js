@@ -12,40 +12,49 @@ function createMainList(){
     const listItemDivOne = document.createElement('div') 
     const listItemDivOneSpanOne = document.createElement('span') 
     const listItemDivOneSpanTwo = document.createElement('span')  
-    const listItemParagraph = document.createElement('p') 
+    const listItemParagraph = document.createElement('p')
+    const listItemDivThree = document.createElement('div') 
     const listItemDivTwo = document.createElement('div')
-    const listItemDivTwoSpan = document.createElement('span') 
-    const listItemDivTwoBtn = document.createElement('button')
+    const listItemDivThreeBtn = document.createElement('button')
     
- 
-   
+    
     listItems.classList = 'card-1_li flex_column'
     listItemTitle.classList = 'card-1_li_title title-4' 
     listItemDivOne.classList = 'card-1_li_div flex_row gap-1'
     listItemDivOneSpanOne.classList = 'card-1_li_div_span-1 text-3' 
     listItemDivOneSpanTwo.classList = 'card-1_li_div_span-1 text-3'
     listItemParagraph.classList = 'card-1_li_div_p text-2'
-    listItemDivTwo.classList = 'section-1_desktop'
-    listItemDivTwoSpan.classList = 'card-1_li_div_span-2 text-3'
-    listItemDivTwoBtn.classList = 'card-1_li_div_button button border_none button_add_card'
+    listItemDivThree.classList = 'section-1_desktop'
+    listItemDivTwo.classList = 'flex_row align_center modalities-jobs'
+    
+    listItemDivThreeBtn.classList = 'card-1_li_div_button button border_none button_add_card'
+
 
     listItemTitle.innerText = job.title
     listItemDivOneSpanOne.innerText = job.enterprise
     listItemDivOneSpanTwo.innerText = job.location
     listItemParagraph.innerText = job.description
-    listItemDivTwoSpan.innerText = job.modalities[0]
+    
     if(jsonData.filter(element => element.title == job.title).length > 0){
-        listItemDivTwoBtn.innerText = 'Retirar candidatura'
+        listItemDivThreeBtn.innerText = 'Retirar candidatura'
     }else{
-        listItemDivTwoBtn.innerText = 'Candidatar'
+        listItemDivThreeBtn.innerText = 'Candidatar'
     }
     
 
-    listItemDivTwoBtn.addEventListener('click', function(){ 
+    job.modalities.forEach(modality =>{
+        const listItemDivTwoSpan = document.createElement('span')
+        listItemDivTwoSpan.classList = 'card-1_li_div_span-2 text-3'
+        listItemDivTwoSpan.innerText = modality
+
+        listItemDivTwo.append(listItemDivTwoSpan)
+    })
+
+    listItemDivThreeBtn.addEventListener('click', function(){ 
         
-        if(listItemDivTwoBtn.innerText == 'Candidatar'){ 
+        if(listItemDivThreeBtn.innerText == 'Candidatar'){ 
             asideListFull.innerHTML = '' 
-            listItemDivTwoBtn.innerText = 'Retirar candidatura'
+            listItemDivThreeBtn.innerText = 'Retirar candidatura'
             let newObject = {
                 id:job.id, 
                 title:job.title, 
@@ -57,7 +66,7 @@ function createMainList(){
             renderAside(asideJobs) 
         }else{
             asideListFull.innerHTML = ''
-            listItemDivTwoBtn.innerText = 'Candidatar' 
+            listItemDivThreeBtn.innerText = 'Candidatar' 
             let findIndexAside = asideJobs.indexOf(job)
             asideJobs.splice(findIndexAside, 1)
             localStorage.setItem("appliedJobs", JSON.stringify(asideJobs))
@@ -65,9 +74,9 @@ function createMainList(){
         }
     })
 
-    listItemDivTwo.append(listItemDivTwoSpan, listItemDivTwoBtn)
+    listItemDivThree.append(listItemDivTwo, listItemDivThreeBtn)
     listItemDivOne.append(listItemDivOneSpanOne, listItemDivOneSpanTwo)
-    listItems.append(listItemTitle, listItemDivOne, listItemParagraph, listItemDivTwo)
+    listItems.append(listItemTitle, listItemDivOne, listItemParagraph, listItemDivThree)
     mainListFull.appendChild(listItems)
     });
     return mainListFull
