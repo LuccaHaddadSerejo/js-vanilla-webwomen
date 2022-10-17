@@ -10,10 +10,6 @@
     max-width: 100%;
 }
 
-
-.header_div{
-}
-
 .header_logo{
     margin-top: 100px;
 }
@@ -33,9 +29,6 @@
     color: var(--color-grey-3);
 }
 
-.header_button{
-}
-
 .anchor_link{
     text-decoration: none;
     color: inherit;
@@ -44,8 +37,4 @@
 .modalities-jobs{
     gap: 15px;
 }
-
-.main{
-}
-
 
